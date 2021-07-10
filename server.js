@@ -25,9 +25,28 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+app.get('/api/whoami', (req, res) => {
+  return res.json({
+    ipaddress : 'ipadress',
+    language : 'en-us',
+    software: 'Mozilla ubuntu'
+  })
+})
 
+// A request to /api/whoami should return a JSON object with your IP address in the ipaddress key.
+// A request to /api/whoami should return a JSON object with your preferred language in the language key.
+// A request to /api/whoami should return a JSON object with your software in the software key.
+// Example Output:
+// {"ipaddress":"::ffff:159.20.14.100","language":"en-US,en;q=0.5",
+// "software":"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"},
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+// var listener = app.listen(process.env.PORT, function () {
+//   console.log('Your app is listening on port ' + listener.address().port);
+// });
+
+var listener = app.listen(process.env.PORT || 3000 , function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
+
+
